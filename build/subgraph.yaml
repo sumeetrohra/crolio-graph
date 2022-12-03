@@ -1,6 +1,6 @@
 specVersion: 0.0.5
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: Crolio
@@ -19,7 +19,7 @@ dataSources:
         - WithdrawnFromBucket
       abis:
         - name: Crolio
-          file: ./abis/Crolio.json
+          file: Crolio/abis/Crolio.json
       eventHandlers:
         - event: BucketCreated(uint256,string,string,address[],uint256[],address)
           handler: handleBucketCreated
@@ -27,4 +27,4 @@ dataSources:
           handler: handleInvestedInBucket
         - event: WithdrawnFromBucket(uint256,uint256,address,address[],uint256[])
           handler: handleWithdrawnFromBucket
-      file: ./src/crolio.ts
+      file: Crolio/Crolio.wasm
