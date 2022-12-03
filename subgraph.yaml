@@ -1,0 +1,29 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Crolio
+    network: mumbai
+    source:
+      address: "0x36F4BC1e552A44a2839B6B60160a5cc3a63a10cD"
+      abi: Crolio
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - BucketCreated
+        - InvestedInBucket
+        - WithdrawnFromBucket
+      abis:
+        - name: Crolio
+          file: ./abis/Crolio.json
+      eventHandlers:
+        - event: BucketCreated(uint256,string,string,address[],uint256[],address)
+          handler: handleBucketCreated
+        - event: InvestedInBucket(uint256,uint256,address,address[],uint256[])
+          handler: handleInvestedInBucket
+        - event: WithdrawnFromBucket(uint256,uint256,address,address[],uint256[])
+          handler: handleWithdrawnFromBucket
+      file: ./src/crolio.ts

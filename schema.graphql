@@ -1,0 +1,36 @@
+type BucketCreated @entity(immutable: true) {
+  id: Bytes!
+  bucketId: BigInt! # uint256
+  bucketName: String! # string
+  description: String! # string
+  tokens: [Bytes]! # address[]
+  weightages: [BigInt]! # uint256[]
+  creator: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type InvestedInBucket @entity(immutable: true) {
+  id: Bytes!
+  bucketId: BigInt! # uint256
+  amountInvested: BigInt! # uint256
+  investorAddress: Bytes! # address
+  tokens: [Bytes]! # address[]
+  holdingsBought: [BigInt]! # uint256[]
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type WithdrawnFromBucket @entity(immutable: true) {
+  id: Bytes!
+  bucketId: BigInt! # uint256
+  amountOut: BigInt! # uint256
+  investorAddress: Bytes! # address
+  tokens: [Bytes]! # address[]
+  holdingsSold: [BigInt]! # uint256[]
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
